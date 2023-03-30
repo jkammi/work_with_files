@@ -54,7 +54,7 @@ public class ReadingFilesInsideOfZipTest {
              ZipInputStream zs = new ZipInputStream(is)) {
             ZipEntry entry;
             while ((entry = zs.getNextEntry()) != null) {
-                if (entry.getName().equals(csvFileName)) {
+                if (entry.getName().endsWith(".csv")) {
                     InputStreamReader isr = new InputStreamReader(zs);
                     CSVReader csvReader = new CSVReader(isr);
                     List<String[]> content = csvReader.readAll();
@@ -72,7 +72,7 @@ public class ReadingFilesInsideOfZipTest {
              ZipInputStream zs = new ZipInputStream(is)) {
             ZipEntry entry;
             while ((entry = zs.getNextEntry()) != null) {
-                if (entry.getName().equals(pdfFileName)) {
+                if (entry.getName().endsWith(".pdf")) {
                     InputStreamReader isr = new InputStreamReader(zs);
                     PDF pdf = new PDF(zs);
                     assertThat(pdf, containsText("This is the tenth anniversary of the World Happiness"));
@@ -89,7 +89,7 @@ public class ReadingFilesInsideOfZipTest {
              ZipInputStream zs = new ZipInputStream(is)) {
             ZipEntry entry;
             while ((entry = zs.getNextEntry()) != null) {
-                if (entry.getName().equals(xlsxFileName)) {
+                if (entry.getName().endsWith(".xlsx")) {
                     InputStreamReader isr = new InputStreamReader(zs);
                     XLS xls = new XLS(zs);
                       Assertions.assertEquals(
