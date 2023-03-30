@@ -58,7 +58,7 @@ public class ReadingFilesInsideOfZipTest {
                     InputStreamReader isr = new InputStreamReader(zs);
                     CSVReader csvReader = new CSVReader(isr);
                     List<String[]> content = csvReader.readAll();
-                    Assertions.assertArrayEquals(new String[]{"R.U0.ab2c3713-c248-415a-8242-01e72830eebd", "213.891685", "136", "136"}, content.get(4));
+                    Assertions.assertArrayEquals(new String[]{"R.U0.ab2c3713-c248-415a-8242-01e72830eebd", "213,891685", "136", "136"}, content.get(4));
                     break;
                 }
             }
